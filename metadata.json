@@ -1,0 +1,6 @@
+{
+  "name": "HackOps AI",
+  "description": "Premium, futuristic AI-powered hackathon platform with real-time matchmaking, smart mentoring, and AI evaluations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

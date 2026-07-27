@@ -1,0 +1,194 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile representation with matchmaking info",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string", "maxLength": 50 },
+        "username": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string" },
+        "isAdmin": { "type": "boolean" },
+        "college": { "type": "string", "maxLength": 100 },
+        "year": { "type": "string", "maxLength": 20 },
+        "skills": { "type": "array" },
+        "preferredRole": { "type": "string", "maxLength": 50 },
+        "languages": { "type": "array" },
+        "interests": { "type": "array" },
+        "experienceLevel": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "github": { "type": "string", "maxLength": 100 },
+        "linkedin": { "type": "string", "maxLength": 100 },
+        "availability": { "type": "string", "maxLength": 50 },
+        "preferredTeamSize": { "type": "integer" },
+        "profileImage": { "type": "string" },
+        "xp": { "type": "integer" },
+        "xpWeekly": { "type": "integer" },
+        "xpMonthly": { "type": "integer" },
+        "xpYearly": { "type": "integer" },
+        "xpEarnedToday": { "type": "integer" },
+        "level": { "type": "integer" },
+        "wins": { "type": "integer" },
+        "participated": { "type": "integer" },
+        "streak": { "type": "integer" },
+        "badges": { "type": "array" },
+        "lastActive": { "type": "string", "format": "date-time" },
+        "latestActivityType": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email"]
+    },
+    "Registration": {
+      "title": "Registration",
+      "description": "Hackathon registration pass",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string", "maxLength": 25 },
+        "github": { "type": "string", "maxLength": 50 },
+        "track": { "type": "string", "enum": ["GenAI", "Agents", "Web3", "HealthTech"] },
+        "glowColor": { "type": "string", "enum": ["purple", "blue", "cyan"] },
+        "ticketNumber": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "name", "github", "track", "glowColor", "ticketNumber"]
+    },
+    "TeamInvite": {
+      "title": "TeamInvite",
+      "description": "A matchmaking invitation sent to form teams",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "receiverName": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "declined"] },
+        "message": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId", "senderName", "receiverId", "receiverName", "status"]
+    },
+    "Team": {
+      "title": "Team",
+      "description": "A formed hacker team",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "members": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "members"]
+    },
+    "Chat": {
+      "title": "Chat",
+      "description": "AI Mentor Chat History session",
+      "type": "object",
+      "properties": {
+        "chatId": { "type": "string" },
+        "userId": { "type": "string" },
+        "messages": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["chatId", "userId", "messages"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Hackathon project details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "githubUrl": { "type": "string" },
+        "zipFileName": { "type": "string" },
+        "demoVideoUrl": { "type": "string" },
+        "techStack": { "type": "string" },
+        "teamMembers": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "description", "techStack"]
+    },
+    "Evaluation": {
+      "title": "Evaluation",
+      "description": "AI project evaluation result",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "overallScore": { "type": "number" },
+        "grade": { "type": "string" },
+        "probability": { "type": "number" },
+        "scores": { "type": "object" },
+        "strengths": { "type": "array" },
+        "weaknesses": { "type": "array" },
+        "improvements": { "type": "array" },
+        "feedback": { "type": "string" },
+        "recruiterInsight": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "projectId", "overallScore", "grade"]
+    },
+    "Credential": {
+      "title": "Credential",
+      "description": "Verifiable NFT completion badge and hackathon credentials",
+      "type": "object",
+      "properties": {
+        "credentialId": { "type": "string" },
+        "userId": { "type": "string" },
+        "hackathonName": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "maxLength": 50 },
+        "issueDate": { "type": "string", "format": "date-time" },
+        "ipfsMetadataUrl": { "type": "string" },
+        "cryptographicHash": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "enum": ["Available", "Claimed"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["credentialId", "userId", "hackathonName", "role", "status"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "Stored user profiles"
+    },
+    "registrations/{userId}": {
+      "schema": "Registration",
+      "description": "Hacker registrations"
+    },
+    "teamInvites/{inviteId}": {
+      "schema": "TeamInvite",
+      "description": "Team invitations"
+    },
+    "teams/{teamId}": {
+      "schema": "Team",
+      "description": "Formed teams"
+    },
+    "users/{userId}/chats/{chatId}": {
+      "schema": "Chat",
+      "description": "AI Mentor Chat History sessions"
+    },
+    "projects/{projectId}": {
+      "schema": "Project",
+      "description": "Uploaded projects for evaluation"
+    },
+    "evaluations/{evaluationId}": {
+      "schema": "Evaluation",
+      "description": "Detailed evaluation reports"
+    },
+    "credentials/{credentialId}": {
+      "schema": "Credential",
+      "description": "Verifiable NFT completion badges and credentials"
+    }
+  }
+}
